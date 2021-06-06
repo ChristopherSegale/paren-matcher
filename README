@@ -1,0 +1,1 @@
+The utility paren-matcher is a program that acme users can use in order to balance out their parentheses.  To use this program in acme: type '|paren-matcher' on the command bar for the text you are editing, select the text you want balanced, then put your mouse pointer on the area you put '|paren-matcher' on.
