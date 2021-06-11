@@ -14,6 +14,11 @@
       (lambda ()
 	(read-char stream nil))))
 
+(defun list-to-string (l &optional (reversep t))
+  (if reversep
+      (coerce (reverse l) 'string)
+      (coerce l 'string)))
+
 (defmacro! states (&rest states)
   `(let (g!state g!pstate)
      (macrolet ((state (s)

@@ -5,7 +5,7 @@
 
 (in-package :paren-matcher)
 
-(declaim (inline list-repeat
+(declaim (inline stream-select
+		 list-to-string
+		 list-repeat
 		 paren-fixer))
-
-(defvar *stdin-called* nil)

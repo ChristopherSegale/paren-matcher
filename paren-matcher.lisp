@@ -2,9 +2,9 @@
 
 (defun correct-string (char-list pair-count p2)
   (cond
-    ((= pair-count 0) (coerce (reverse char-list) 'string))
-    ((> pair-count 0) (coerce (reverse (append (list-repeat p2 pair-count) char-list)) 'string))
-    (t (coerce (reverse (nthcdr (* pair-count -1) char-list)) 'string))))
+    ((= pair-count 0) (list-to-string char-list))
+    ((> pair-count 0) (list-to-string (append (list-repeat p2 pair-count) char-list)))
+    (t (list-to-string (nthcdr (* pair-count -1) char-list)))))
 
 (defun pair-count (p1 p2 comment-char escape-char quote-char)
   (let* ((count 0) characters
@@ -49,9 +49,3 @@
 
 (defun main ()
   (princ (paren-fixer :stdin)))
-
-;; Checking how well #'get-char worked
-;;(defun main ()
-;;  (do ((ch (get-char) (get-char)))
-;;      ((null ch))
-;;    (write-char ch)))
