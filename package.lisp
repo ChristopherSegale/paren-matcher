@@ -1,6 +1,6 @@
 (defpackage :paren-matcher
   (:use :cl)
-  (:import-from :let-over-lambda :defmacro! :dlambda :plambda :with-pandoric)
+  (:import-from :let-over-lambda :defmacro! :dlambda :aif)
   (:export :main))
 
 (in-package :paren-matcher)
