@@ -20,7 +20,7 @@
       (coerce l 'string)))
 
 (defmacro! states (&rest states)
-  `(let (g!state g!pstate)
+  `(let (,g!state ,g!pstate)
      (macrolet ((state (s)
 		  `(setf ,',g!state #',s))
 		(save-state (s)
