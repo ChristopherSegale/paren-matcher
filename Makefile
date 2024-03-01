@@ -22,7 +22,7 @@ $(BUNDLE):
 	$(LISP) $(BNFLAGS)
 
 clean_all:
-	rm -rf $(BIN) $(BUNDLE)
+	rm -rf bin/$(BIN) $(BUNDLE)
 
 clean:
-	rm -f $(BIN)
+	rm -f bin/$(BIN)

@@ -7,5 +7,5 @@
 	       (:file "util")
 	       (:file "paren-matcher"))
   :build-operation "program-op"
-  :build-pathname "paren-matcher"
+  :build-pathname "bin/paren-matcher"
   :entry-point "paren-matcher:main")
