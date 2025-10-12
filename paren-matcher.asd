@@ -1,8 +1,7 @@
 (asdf:defsystem "paren-matcher"
   :author "Christopher Segale"
   :license "MIT"
-  :depends-on (:let-over-lambda
-	       :cffi)
+  :depends-on (:let-over-lambda)
   :components ((:file "package")
 	       (:file "util")
 	       (:file "paren-matcher"))

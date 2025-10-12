@@ -1,19 +1,5 @@
 (in-package :paren-matcher)
 
-(cffi:defcfun ("getchar" gchar) :int)
-
-(defun get-char ()
-  (let ((ch (gchar)))
-    (if (> ch 0)
-	(code-char ch)
-	nil)))
-
-(defun stream-select (stream)
-  (if (eq stream :stdin)
-      #'get-char
-      (lambda ()
-	(read-char stream nil))))
-
 (defun list-to-string (l &optional (reversep t))
   (if reversep
       (coerce (reverse l) 'string)

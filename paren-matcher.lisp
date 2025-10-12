@@ -34,16 +34,16 @@
        (push ch characters)))))
 
 (defun pair-fixer (stream p1 p2 &key comment-char escape-char quote-char)
-  (labels ((inner (pc)
-	     (aif (funcall (stream-select stream))
-		  (inner (progn
-			   (funcall pc let-over-lambda::it)
-			   pc))
-		  (funcall pc :corrected-string))))
-    (inner (pair-count p1 p2 comment-char escape-char quote-char))))
+  (labels ((inner (pc ch)
+	     (if ch
+		 (progn
+		   (funcall pc ch)
+		   (inner pc (read-char stream nil)))
+		 (funcall pc :corrected-string))))
+    (inner (pair-count p1 p2 comment-char escape-char quote-char) (read-char stream nil))))
 
 (defun paren-fixer (stream &key (comment #\;) (escape #\\) (quote-char #\"))
   (pair-fixer stream #\( #\) :comment-char comment :escape-char escape :quote-char quote-char))
 
 (defun main ()
-  (princ (paren-fixer :stdin)))
+  (princ (paren-fixer *standard-input*)))
