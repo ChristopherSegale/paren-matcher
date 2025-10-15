@@ -1,7 +1,7 @@
 BIN=paren-matcher
 LISP=sbcl
 BUNDLE=bundle
-LIBS=:let-over-lambda :cffi
+LIBS=:let-over-lambda
 BNFLAGS=--no-sysinit --non-interactive \
         --eval "(ql:quickload '($(LIBS)))" \
         --eval "(ql:bundle-systems '($(LIBS)) :to \"$(BUNDLE)/\")" \
@@ -9,7 +9,6 @@ BNFLAGS=--no-sysinit --non-interactive \
 BUILDFLAGS=--no-sysinit --no-userinit --non-interactive \
 	   --load "$(BUNDLE)/bundle.lisp" \
 	   --eval '(asdf:load-system :let-over-lambda)' \
-	   --eval '(asdf:load-system :cffi)' \
 	   --eval '(load "paren-matcher.asd")' \
 	   --eval '(asdf:make :paren-matcher)'
 
