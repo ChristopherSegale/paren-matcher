@@ -34,13 +34,10 @@
        (push ch characters)))))
 
 (defun pair-fixer (stream p1 p2 &key comment-char escape-char quote-char)
-  (labels ((inner (pc ch)
-	     (if ch
-		 (progn
-		   (funcall pc ch)
-		   (inner pc (read-char stream nil)))
-		 (funcall pc :corrected-string))))
-    (inner (pair-count p1 p2 comment-char escape-char quote-char) (read-char stream nil))))
+  (do ((pc (pair-count p1 p2 comment-char escape-char quote-char))
+       (ch (read-char stream nil) (read-char stream nil)))
+      ((null ch) (funcall pc :corrected-string))
+    (funcall pc ch)))
 
 (defun paren-fixer (stream &key (comment #\;) (escape #\\) (quote-char #\"))
   (pair-fixer stream #\( #\) :comment-char comment :escape-char escape :quote-char quote-char))
